@@ -1,21 +1,24 @@
+const path = require('path');
+require('dotenv').config(({path : path.resolve(__dirname, "./.env")}));
 const WebSocket = require('ws')
 const mongoose = require("mongoose")
 const mqtt = require('mqtt');
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+
 // const { newData } = require("./db_inserter/insert.js");     *********** DO IN CODE ALREADY ******************
 const { holder } = require("./utilities/mqtt.js");
 // const key = require("./utilities/data_parser.js");   ************NOT REQUIRED AS MAKER AND KEY IS DOING SAME WORK*************
 const maker = require("./utilities/parseDeviceData.js");
 const Data = require("./models/data.js")
 const cookieParser = require("cookie-parser");
-const {restrictToLoggedinUserOnly} = require("./middlewares/auth");
+const {restrictToLoggedinUserOnly} = require("./middlewares/auth.js");
 const fs = require('fs');
 
 
+
 const app = express();
-const httpPort = 8737;
+const httpPort = process.env.PORT || 8737;
 const wsPort = 3027;
 
 app.use(express.json());
@@ -23,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 
-const userRoute = require("./routes/user");
+const userRoute = require("./routes/user.js");
 
 app.use("/user",userRoute)
 
@@ -120,12 +123,13 @@ class Node {
     }
 }
 
-const db = 'mongodb+srv://hemlatasharmasatish:lgDngzsMzj1q26bE@cluster0.4ejh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+//'mongodb+srv://hemlatasharmasatish:lgDngzsMzj1q26bE@cluster0.4ejh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const db = process.env.MONGO_URL;
 // const db = 'mongodb://127.0.0.1:27017/power_monitoring?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.7'
 
 mongoose.connect(db)
     .then(() => {
-        console.log("Connected to MongoDB");
+        console.log("Connected to MongoDB : ", process.env.MONGO_URL);
     })
     .catch(err => {
         console.error("MongoDB connection error:", err);
