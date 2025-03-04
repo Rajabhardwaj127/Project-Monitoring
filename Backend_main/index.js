@@ -556,7 +556,7 @@ app.get("/auto",(req,res)=>{
     res.sendFile(path.join(__dirname, "../Frontend/Auto.html"));
 })
 
-app.get("/discography" ,(req,res)=>{
+app.get("/discography", restrictToLoggedinUserOnly ,(req,res)=>{
     email = req.cookies.email; // Extract email from cookies
     
     if (!email) {
@@ -567,12 +567,12 @@ app.get("/discography" ,(req,res)=>{
     res.sendFile(path.join(__dirname, "../Frontend/discography.html"));
 });
 
-app.get("/discography/Adhrit_Lab",(req,res)=>{
+app.get("/discography/Adhrit_Lab", restrictToLoggedinUserOnly,(req,res)=>{
     
     res.sendFile(path.join(__dirname, "../Frontend/index.html"));
 });
 
-app.get("/discography/Adder",(req,res)=>{
+app.get("/discography/Adder", restrictToLoggedinUserOnly,(req,res)=>{
     
     res.sendFile(path.join(__dirname, "../Frontend/add.html"));
 });
