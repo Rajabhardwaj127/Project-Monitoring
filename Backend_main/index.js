@@ -30,13 +30,11 @@ const userRoute = require("./routes/user.js");
 
 app.use("/user",userRoute)
 
-
-
 let topics 
 let email
 let which
 try {
-    const data = fs.readFileSync('Backend_main/info.txt', 'utf8'); 
+    const data = fs.readFileSync(path.join(__dirname, './info.txt'), 'utf8'); 
     topics = data.split("\n").map(topic => topic.trim()).filter(topic => topic !== ""); // Remove extra spaces and empty lines
     console.log(topics); // Output: ["topic7", "topic8", "topic9", "topic10"]
 } catch (err) {
