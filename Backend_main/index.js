@@ -537,6 +537,8 @@ app.use(express.static(path.join(__dirname, "../")));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./Backend_main/views"));
+app.set("views", path.join(__dirname, "Backend_main", "views"));
+
 
 // creating api routes
 app.get("/",(req,res)=>{
