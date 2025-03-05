@@ -541,7 +541,7 @@ app.set("views", path.join(__dirname, "views"));
 
 
 // creating api routes
-app.get("/",(req,res)=>{x   
+app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname, "../Frontend/vidyut.html"));
 });
 
