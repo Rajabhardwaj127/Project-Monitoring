@@ -44,11 +44,18 @@ try {
 console.log(topics)
 
 // Express middleware
+// app.use(cors({
+//     origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5500', 'http://127.0.0.1:5500'],
+//     methods: ['GET', 'POST'],
+//     credentials: true
+// }));
+
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5500', 'http://127.0.0.1:5500'],
-    methods: ['GET', 'POST'],
-    credentials: true
-}));
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: 3600, // 1 hour
+  }));
 
 let selectedTopic = 'topic7';
 let selectedphase= 1;

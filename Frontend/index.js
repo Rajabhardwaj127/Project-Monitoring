@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         try {
-            const response = await fetch('http://localhost:8737/api/data', {
+            const response = await fetch('https://project-monitoring.onrender.com/api/data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ async function updateStatus() {
     };
 
     try {
-        const response = await fetch('http://localhost:8737/api/data', {
+        const response = await fetch('https://project-monitoring.onrender.com/api/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ async function sender(phase) {
         const payload = { phase: phase };  
         console.log("Sending payload:", payload);
 
-        const response = await fetch('http://localhost:8737/api/topic/phase', { 
+        const response = await fetch('https://project-monitoring.onrender.com/api/topic/phase', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),  
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ws.close();
         }
 
-        ws = new WebSocket('ws://localhost:3027');
+        ws = new WebSocket('wss://project-monitoring.onrender.com');
         
         ws.onmessage = function(event) {
             const data = JSON.parse(event.data);
