@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ws.close();
         }
 
-        ws = new WebSocket('ws://localhost:3027');
+        ws = new WebSocket('ws://https://project-monitoring.onrender.com');
         
         ws.onmessage = function(event) {
             const data = JSON.parse(event.data);
