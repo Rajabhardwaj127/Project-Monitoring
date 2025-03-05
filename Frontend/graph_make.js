@@ -1,4 +1,4 @@
-const socket = new WebSocket('ws://https://project-monitoring.onrender.com');
+const socket = new WebSocket('ws://localhost:3027');
 
 socket.onopen = function () {
     console.log("WebSocket connection established");

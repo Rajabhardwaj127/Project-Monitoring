@@ -879,7 +879,7 @@
         });
         async function sender(topic) {
             try {
-                await fetch('https://project-monitoring.onrender.com/api/topic', {
+                await fetch('http://localhost:8737/api/topic', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

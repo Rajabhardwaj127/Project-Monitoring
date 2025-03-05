@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         try {
-            const response = await fetch('https://project-monitoring.onrender.com/api/data', {
+            const response = await fetch('http://localhost:8737/api/data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", async function() {
     try {
         // Fetch the data from your API
-        const response = await fetch('https://project-monitoring.onrender.com/api/data'); // Replace with your actual endpoint
+        const response = await fetch('http://localhost:8737/api/data'); // Replace with your actual endpoint
         const data = await response.json();
 
         // Assuming the response is an object with properties for each metric 
@@ -128,7 +128,7 @@ async function updateStatus() {
     };
 
     try {
-        const response = await fetch('https://project-monitoring.onrender.com/api/data', {
+        const response = await fetch('http://localhost:8737/api/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ async function sender(phase) {
         const payload = { phase: phase };  
         console.log("Sending payload:", payload);
 
-        const response = await fetch('https://project-monitoring.onrender.com/api/topic/phase', { 
+        const response = await fetch('http://localhost:8737/api/topic/phase', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),  
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ws.close();
         }
 
-        ws = new WebSocket('ws://https://project-monitoring.onrender.com');
+        ws = new WebSocket('ws://http://localhost:8737');
         
         ws.onmessage = function(event) {
             const data = JSON.parse(event.data);
