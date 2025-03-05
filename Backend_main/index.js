@@ -61,7 +61,7 @@ let selectedTopic = 'topic7';
 let selectedphase= 1;
 
 // WebSocket Server
-const wss = new WebSocket.Server({ port: wsPort });
+const wss = new WebSocket.Server({ port: wsPort, cors :{origin : '*'} });
 
 class Node {
     // Constructor to initialize node properties
