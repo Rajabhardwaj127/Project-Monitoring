@@ -505,7 +505,7 @@ app.post('/api/data', async (req, res) => {
         console.log({ topic, message });
     
         try {
-            await clients.publish(topic, message, { qos: 0 }); // Send the formatted message
+            await clients[0].publish(topic, message, { qos: 0 }); // Send the formatted message
             console.log(`Message sent to topic "${topic}":`, message);
         } catch (err) {
             console.error('Error publishing message:', err);
@@ -521,7 +521,7 @@ app.post('/api/data', async (req, res) => {
         console.log({ topic, message });
     
         try {
-            await clients.publish(topic, message, { qos: 0 }); // Send the formatted message
+            await clients[1].publish(topic, message, { qos: 0 }); // Send the formatted message
             console.log(`Message sent to topic "${topic}":`, message);
         } catch (err) {
             console.error('Error publishing message:', err);

@@ -122,7 +122,7 @@ async function updateStatus() {
 
     // Prepare the data to send
     const acData = {
-        deviceId: "PHASE1",
+        deviceId: "MOTOR",
         status: acToggle.checked ? "ON" : "OFF"
 
     };
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ws.close();
         }
 
-        ws = new WebSocket('ws://http://localhost:8737');
+        ws = new WebSocket('ws://localhost:3027');
         
         ws.onmessage = function(event) {
             const data = JSON.parse(event.data);
